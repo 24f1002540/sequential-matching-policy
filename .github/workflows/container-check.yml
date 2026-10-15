@@ -1,0 +1,29 @@
+name: container-check
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Policy tests
+        run: python -m unittest -v test_policy
+      - name: Verify data
+        run: python verify_data.py
+      - name: Build image (no credentials, no network at run time)
+        run: docker build -t sequential-policy:submission .
+      - name: Container evaluation (official evaluator, offline container, 1 episode)
+        run: python evaluate.py --image sequential-policy:submission --seeds 101 --output results/container_check.json
+      - name: Show result
+        if: always()
+        run: cat results/container_check.json || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: container_check
+          path: results/container_check.json
