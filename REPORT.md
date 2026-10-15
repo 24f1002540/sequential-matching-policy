@@ -1,6 +1,6 @@
 # Technical report: a sequential matching policy under uncertainty
 
-**Team:** [TEAM NAME] ([Member 1], [Member 2], [Member 3], [Member 4]). **Repository:** https://github.com/24f1002540/sequential-matching-policy
+**Team:** Danpotatoes: Dan George (roll no. 25f3001550) and Pranav Mesta (roll no. 24f1002540). **Repository:** https://github.com/24f1002540/sequential-matching-policy
 **Release:** participant kit 1.0.0 (synthetic data only). **Submitted version:** see the commit SHA in the Final submission issue.
 
 ## 1. Summary
@@ -185,4 +185,4 @@ All commands are in the README. The submitted policy is deterministic (no random
 
 ## 9. Provenance and tools
 
-Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run experiments and draft code and text. [TEAM: edit this sentence to state exactly what the team did itself and which results it reviewed.] The team retains ownership of its work; this report grants no commercial licence.
+Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run the experiments and the policy code, and draft the Round 1 note, the code and this report. The team chose the problem track, directed the work and its scope, supplied the repository and accounts, and is responsible for the submission; the team's own review of individual results is not claimed beyond that. The team retains ownership of its work; this report grants no commercial licence.
