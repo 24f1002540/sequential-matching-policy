@@ -1,0 +1,43 @@
+batch-1 complete seeds: 20 [106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125]
+
+== ARM SUMMARY (confirmatory seeds; per-episode means, equal-weight over families) ==
+arm   MSMI/100  coverage mutual/100   askcost  assign  mutual   dates    MSMI  zeroMSMI   events
+A        0.471     0.338       5.27     200.5    73.5    10.5     8.3    0.94     51/120      113
+C        0.417     0.338       5.45     197.2    74.3    10.9     8.2    0.83     58/120      100
+Fg       0.479     0.337       5.40     240.6    73.9    10.8     8.2    0.96     52/120      115
+SD across seeds of the primary score: {'A': 0.28, 'C': 0.328, 'Fg': 0.322}
+
+== MSMI per 100 by family ==
+arm  development      sparse  cold_start     delayed       shift       drift
+A          0.725       0.100       0.300       0.450       0.600       0.650
+C          0.675       0.050       0.225       0.475       0.500       0.575
+Fg         0.725       0.100       0.275       0.500       0.575       0.700
+
+== PRE-SPECIFIED CONTRASTS K1-K4 (seed-cluster bootstrap 95% CI) ==
+K1  C - A                                            mutual_acceptances                 +0.358 [ -0.383, +1.142]  seeds better/worse/tied 10/10/0 (n=20)
+K2  C - A                                            mutual_second_meeting_intention    -0.108 [ -0.408, +0.192]  seeds better/worse/tied 8/11/1 (n=20)
+K3  Fg - C                                           mutual_second_meeting_intention    +0.125 [ -0.125, +0.392]  seeds better/worse/tied 9/9/2 (n=20)
+K4  C - A                                            ask_cost                           -3.325 [ -4.200, -2.500]  seeds better/worse/tied 0/20/0 (n=20)
+
+-- headline metric (primary score = mean over families of MSMI per 100 arrived) --
+C - A                                                msmi_per_100_arrived_members       -0.054 [ -0.204, +0.096]  seeds better/worse/tied 8/11/1 (n=20)
+Fg - C                                               msmi_per_100_arrived_members       +0.062 [ -0.062, +0.196]  seeds better/worse/tied 9/9/2 (n=20)
+Fg - A                                               msmi_per_100_arrived_members       +0.008 [ -0.154, +0.163]  seeds better/worse/tied 10/9/1 (n=20)
+
+-- secondary descriptive --
+C - A                                                dates                              -0.150 [ -0.767, +0.475]  seeds better/worse/tied 9/11/0 (n=20)
+Fg - C                                               dates                              +0.042 [ -0.442, +0.600]  seeds better/worse/tied 9/9/2 (n=20)
+C - A                                                coverage                           +0.001 [ -0.001, +0.002]  seeds better/worse/tied 9/9/2 (n=20)
+Fg - C                                               coverage                           -0.001 [ -0.003, +0.000]  seeds better/worse/tied 6/12/2 (n=20)
+C - A                                                mutual_acceptances                 +0.358 [ -0.383, +1.167]  seeds better/worse/tied 10/10/0 (n=20)
+Fg - C                                               mutual_acceptances                 -0.100 [ -0.700, +0.500]  seeds better/worse/tied 11/8/1 (n=20)
+
+-- per-family C - A, MSMI events per episode --
+  development                                        mutual_second_meeting_intention    -0.100 [ -0.650, +0.450]  seeds better/worse/tied 8/8/4 (n=20)
+  sparse                                             mutual_second_meeting_intention    -0.100 [ -0.300, +0.100]  seeds better/worse/tied 1/3/16 (n=20)
+  cold_start                                         mutual_second_meeting_intention    -0.150 [ -0.500, +0.150]  seeds better/worse/tied 3/5/12 (n=20)
+  delayed                                            mutual_second_meeting_intention    +0.050 [ -0.350, +0.500]  seeds better/worse/tied 4/6/10 (n=20)
+  shift                                              mutual_second_meeting_intention    -0.200 [ -0.850, +0.400]  seeds better/worse/tied 6/7/7 (n=20)
+  drift                                              mutual_second_meeting_intention    -0.150 [ -0.700, +0.400]  seeds better/worse/tied 8/8/4 (n=20)
+
+batch-2 complete seeds: 0

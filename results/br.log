@@ -1,0 +1,92 @@
+{"seed": 101, "variant": "development", "valid": true, "msmi": 0}
+{"seed": 102, "variant": "development", "valid": true, "msmi": 2}
+{"seed": 103, "variant": "development", "valid": true, "msmi": 0}
+{"seed": 104, "variant": "development", "valid": true, "msmi": 0}
+{"seed": 105, "variant": "development", "valid": true, "msmi": 1}
+{"seed": 101, "variant": "sparse", "valid": true, "msmi": 0}
+{"seed": 102, "variant": "sparse", "valid": true, "msmi": 1}
+{"seed": 103, "variant": "sparse", "valid": true, "msmi": 0}
+{"seed": 104, "variant": "sparse", "valid": true, "msmi": 0}
+{"seed": 105, "variant": "sparse", "valid": true, "msmi": 0}
+{"seed": 101, "variant": "cold_start", "valid": true, "msmi": 1}
+{"seed": 102, "variant": "cold_start", "valid": true, "msmi": 0}
+{"seed": 103, "variant": "cold_start", "valid": true, "msmi": 0}
+{"seed": 104, "variant": "cold_start", "valid": true, "msmi": 0}
+{"seed": 105, "variant": "cold_start", "valid": true, "msmi": 1}
+{"seed": 101, "variant": "delayed", "valid": true, "msmi": 1}
+{"seed": 102, "variant": "delayed", "valid": true, "msmi": 0}
+{"seed": 103, "variant": "delayed", "valid": true, "msmi": 0}
+{"seed": 104, "variant": "delayed", "valid": true, "msmi": 1}
+{"seed": 105, "variant": "delayed", "valid": true, "msmi": 1}
+{"seed": 101, "variant": "shift", "valid": true, "msmi": 1}
+{"seed": 102, "variant": "shift", "valid": true, "msmi": 1}
+{"seed": 103, "variant": "shift", "valid": true, "msmi": 1}
+{"seed": 104, "variant": "shift", "valid": true, "msmi": 0}
+{"seed": 105, "variant": "shift", "valid": true, "msmi": 1}
+{"seed": 101, "variant": "drift", "valid": true, "msmi": 0}
+{"seed": 102, "variant": "drift", "valid": true, "msmi": 2}
+{"seed": 103, "variant": "drift", "valid": true, "msmi": 0}
+{"seed": 104, "variant": "drift", "valid": true, "msmi": 0}
+{"seed": 105, "variant": "drift", "valid": true, "msmi": 1}
+{
+  "eligible": true,
+  "primary_score": 0.26666666666666666,
+  "scenario_means": {
+    "cold_start": {
+      "msmi_per_100_arrived_members": 0.2,
+      "coverage": 0.368,
+      "mutual_acceptances_per_100": 5.5,
+      "ask_cost": 246,
+      "inference_seconds": 22.536965935400257
+    },
+    "delayed": {
+      "msmi_per_100_arrived_members": 0.3,
+      "coverage": 0.40800000000000003,
+      "mutual_acceptances_per_100": 6.4,
+      "ask_cost": 188.4,
+      "inference_seconds": 21.441446106799777
+    },
+    "development": {
+      "msmi_per_100_arrived_members": 0.3,
+      "coverage": 0.40900000000000003,
+      "mutual_acceptances_per_100": 5.7,
+      "ask_cost": 188.4,
+      "inference_seconds": 22.45116221100043
+    },
+    "drift": {
+      "msmi_per_100_arrived_members": 0.3,
+      "coverage": 0.40900000000000003,
+      "mutual_acceptances_per_100": 5.4,
+      "ask_cost": 188.4,
+      "inference_seconds": 22.06164020879869
+    },
+    "shift": {
+      "msmi_per_100_arrived_members": 0.4,
+      "coverage": 0.406,
+      "mutual_acceptances_per_100": 5.8,
+      "ask_cost": 188.4,
+      "inference_seconds": 21.79257782560071
+    },
+    "sparse": {
+      "msmi_per_100_arrived_members": 0.1,
+      "coverage": 0.139,
+      "mutual_acceptances_per_100": 1.7,
+      "ask_cost": 184.2,
+      "inference_seconds": 24.586759334601084
+    }
+  },
+  "overall": {
+    "msmi_per_100_arrived_members": 0.26666666666666666,
+    "coverage": 0.35650000000000004,
+    "mutual_acceptances_per_100": 5.083333333333333,
+    "ask_cost": 197.3,
+    "inference_seconds": 22.478425270366824
+  },
+  "ranking_key_descending": [
+    0.26666666666666666,
+    0.35650000000000004,
+    5.083333333333333,
+    -197.3,
+    -22.478425270366824
+  ]
+}

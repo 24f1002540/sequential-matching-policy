@@ -1,0 +1,20 @@
+name: "Technical question"
+description: "Ask a public question about rules, data or the interface"
+body:
+  - type: markdown
+    attributes:
+      value: "Public issue: do not include personal information, real-member data or credentials."
+  - type: textarea
+    id: topic
+    attributes:
+      label: "Question"
+      description: "Explain the question and link relevant files."
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: "What you checked"
+      description: "List related FAQ entries or earlier issues."
+    validations:
+      required: true

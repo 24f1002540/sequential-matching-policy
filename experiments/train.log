@@ -1,0 +1,69 @@
+rolled 1000 development 85
+rolled 1000 sparse 95
+rolled 1000 cold_start 153
+rolled 1000 delayed 234
+rolled 1000 drift 319
+rolled 1001 development 448
+rolled 1001 sparse 470
+rolled 1001 cold_start 559
+rolled 1001 delayed 684
+rolled 1001 drift 815
+rolled 1002 development 907
+rolled 1002 sparse 928
+rolled 1002 cold_start 1008
+rolled 1002 delayed 1086
+rolled 1002 drift 1178
+rolled 1003 development 1277
+rolled 1003 sparse 1291
+rolled 1003 cold_start 1359
+rolled 1003 delayed 1453
+rolled 1003 drift 1555
+rolled 1004 development 1647
+rolled 1004 sparse 1666
+rolled 1004 cold_start 1758
+rolled 1004 delayed 1833
+rolled 1004 drift 1927
+rolled 1005 development 2024
+rolled 1005 sparse 2051
+rolled 1005 cold_start 2113
+rolled 1005 delayed 2203
+rolled 1005 drift 2300
+rolled 1006 development 2360
+rolled 1006 sparse 2376
+rolled 1006 cold_start 2450
+rolled 1006 delayed 2520
+rolled 1006 drift 2580
+rolled 1007 development 2641
+rolled 1007 sparse 2663
+rolled 1007 cold_start 2743
+rolled 1007 delayed 2802
+rolled 1007 drift 2863
+rolled 2000 development 79
+rolled 2000 sparse 97
+rolled 2000 cold_start 181
+rolled 2000 delayed 265
+rolled 2000 drift 345
+rolled 2001 development 412
+rolled 2001 sparse 439
+rolled 2001 cold_start 517
+rolled 2001 delayed 589
+rolled 2001 drift 657
+rolled 2002 development 737
+rolled 2002 sparse 749
+rolled 2002 cold_start 832
+rolled 2002 delayed 914
+rolled 2002 drift 994
+M1 C=0.03 val logloss 0.6554
+M1 C=0.1 val logloss 0.6564
+M1 C=0.3 val logloss 0.6570
+M1 C=1 val logloss 0.6573
+M1 C=3 val logloss 0.6574
+M1 chosen C=0.03 | VAL AUC 0.575 Brier 0.2315 (const 0.2355)
+kappa=1.095 | VAL mutual: predicted mean 0.1489 observed 0.1388
+P(date within 30d | mutual) = 0.773 (n=431)
+M4 C=0.03 val logloss 0.2829
+M4 C=0.1 val logloss 0.2854
+M4 C=0.3 val logloss 0.2894
+M4 C=1 val logloss 0.2928
+M4 chosen C=0.03 n_train=333 n_val=111 | VAL AUC 0.520 Brier 0.0748 (const 0.0745)
+saved model_v1.json

@@ -1,0 +1,20 @@
+name: "Kit defect"
+description: "Report a reproducible defect without private data"
+body:
+  - type: markdown
+    attributes:
+      value: "Public issue: do not include personal information, real-member data or credentials."
+  - type: textarea
+    id: summary
+    attributes:
+      label: "Summary"
+      description: "Describe the observed and expected behaviour."
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "Reproduction"
+      description: "Give the command, release version, Python version and error."
+    validations:
+      required: true

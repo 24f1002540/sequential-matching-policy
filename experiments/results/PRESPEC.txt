@@ -1,0 +1,44 @@
+Pre-specified confirmatory run (written before any seed 106-125 episode was run). Written: $(date)
+Seeds: 106-125 (20 seeds), all 6 scenario families, arms: A_greedy, C_targeted_greedy_crude, Fg_learned_greedy.
+No policy constants changed since the 101-105 comparison. Seeds 101-105 are exploratory; 106-125 are confirmatory.
+Primary confirmatory contrasts (paired by seed x family, 120 episodes, 95% bootstrap CI over episodes):
+  K1: C - A on mutual acceptances per episode          (hypothesis: > 0)
+  K2: C - A on MSMI events per episode                  (hypothesis: > 0)
+  K3: Fg - C on MSMI events per episode                 (hypothesis: < 0, i.e. learned system does not improve MSMI)
+  K4: C - A on ask cost                                  (hypothesis: <= 0)
+Secondary (descriptive): primary score by arm, coverage, funnel, per-family.
+Report results whatever the direction.
+Fri Oct  9 13:16:39 Asia 2026
+
+ADDENDUM (written while the first batch was still running; concerns arms not yet run on seeds 106-125):
+Batch 2 arms: F_learned_global, G_learned_global_adaptive on seeds 106-125, all 6 families (Fg_learned_greedy comes from batch 1).
+  K5 (H3): F - Fg on mutual acceptances and MSMI events per episode  (no directional hypothesis: tests whether global matching with learned weights helps)
+  K6 (H4): G - F on mutual acceptances and MSMI events per episode, overall and within shift and drift families (hypothesis: > 0)
+Partial batch-1 output had been glanced at for progress only.
+
+ADDENDUM 2 (written after batch-1 results were seen; concerns arms N_no_asks and R_random, not yet run on seeds 106-125):
+  K7: N - A on mutual acceptances, MSMI events, coverage          (hypothesis: < 0; clarification is necessary)
+  K8: A - R on mutual acceptances and MSMI events                 (hypothesis: > 0; supplied similarity ranking beats random-feasible)
+Batch-1 outcome seen before this addendum: K1 and K2 (targeted vs baseline asks) did NOT replicate the exploratory result.
+
+ADDENDUM 3 (offline bounding analysis, written after seeing batch-1 results and the supply diagnostic):
+  Arm O_oracle_global (run_oracle.py): incumbent C's asks + max-weight matching on TRUE pair MSMI probability (simulator internals).
+  Seeds 106-125 x 6 families. Purpose: upper bound on the gain from perfect pair-quality knowledge. NOT a policy; never submitted.
+  K9: O - C on MSMI events per episode and on MSMI per 100 (descriptive bound; no directional claim beyond O >= C).
+
+ADDENDUM 4 (written after seeing partial oracle results, before running arm S):
+  Arm S_scarcity: incumbent C's targeted asks + max-cardinality, max-weight matching with edge weight
+  1/deg(a) + 1/deg(b) + 0.01*similarity, where deg = number of currently feasible partners among available members
+  (serve scarce members first so that hub capacity is not spent on hub-hub pairs). No tuning; constants fixed here.
+  Seeds 106-125, all six families. Contrasts:
+  K10: S - C on assignments per episode and on distinct-member coverage   (hypothesis: > 0)
+  K11: S - C on MSMI events per episode and on primary score              (hypothesis: > 0)
+
+ADDENDUM 5 (written before any expected-MSMI run):
+  Batch 3 (arms N, R on 106-125) is CANCELLED to save compute; K7 and K8 remain exploratory-only (seeds 101-105).
+  Arm S_scarcity (ADDENDUM 4) is already running on seeds 106-125 as specified; K10 and K11 use all 20 seeds.
+  New OFFLINE evaluation aid (run_expected.py): for each introduced pair, the simulator's true probability of mutual acceptance and of
+  MSMI (integrated over the unobserved pair shock) is summed per episode ('expected mutual', 'expected MSMI'). Never used inside a policy.
+  Arms A, C, Fg, S_scarcity, O_oracle on seeds 106-111 x 6 families (36 episodes per arm); realized metrics are recorded as well.
+  Calibration check (pre-specified): total realized MSMI events vs total expected MSMI per arm should agree within sampling error.
+  Contrasts on expected MSMI and expected mutual per episode: E1 C-A, E2 Fg-C, E3 S-C (hypothesis > 0), E4 O-C (bound).

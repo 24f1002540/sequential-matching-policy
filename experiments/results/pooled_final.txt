@@ -1,0 +1,81 @@
+
+#### mutual_acceptances
+C - A (targeted vs baseline asks) [expl 101-105] mutual_acceptances             n= 5   +1.367 [ +0.233, +2.633]  SD of per-seed diff 1.574
+C - A (targeted vs baseline asks) [conf 106-125] mutual_acceptances             n=20   +0.358 [ -0.400, +1.167]  SD of per-seed diff 1.803
+C - A (targeted vs baseline asks) [pooled] mutual_acceptances             n=25   +0.560 [ -0.093, +1.280]  SD of per-seed diff 1.777
+Fg - C (learned vs crude) [expl 101-105] mutual_acceptances             n= 5   +0.867 [ -0.533, +2.633]  SD of per-seed diff 2.063
+Fg - C (learned vs crude) [conf 106-125] mutual_acceptances             n=20   -0.100 [ -0.717, +0.508]  SD of per-seed diff 1.421
+Fg - C (learned vs crude) [pooled] mutual_acceptances             n=25   +0.093 [ -0.487, +0.707]  SD of per-seed diff 1.569
+Fg - A [expl 101-105]              mutual_acceptances             n= 5   +2.233 [ +0.667, +3.567]  SD of per-seed diff 1.817
+Fg - A [conf 106-125]              mutual_acceptances             n=20   +0.258 [ -0.575, +1.083]  SD of per-seed diff 1.949
+Fg - A [pooled]                    mutual_acceptances             n=25   +0.653 [ -0.120, +1.453]  SD of per-seed diff 2.051
+F - Fg (global vs greedy) [expl 101-105] mutual_acceptances             n= 5   -0.933 [ -1.767, -0.133]  SD of per-seed diff 1.078
+F - Fg (global vs greedy) [conf 106-125] mutual_acceptances             n=20   +0.600 [ +0.092, +1.108]  SD of per-seed diff 1.185
+F - Fg (global vs greedy) [pooled] mutual_acceptances             n=25   +0.293 [ -0.213, +0.793]  SD of per-seed diff 1.303
+G - F (adaptive vs frozen) [expl 101-105] mutual_acceptances             n= 5   +0.200 [ -0.233, +0.633]  SD of per-seed diff 0.570
+G - F (adaptive vs frozen) [conf 106-125] mutual_acceptances             n=20   -0.300 [ -0.667, +0.067]  SD of per-seed diff 0.880
+G - F (adaptive vs frozen) [pooled] mutual_acceptances             n=25   -0.200 [ -0.527, +0.120]  SD of per-seed diff 0.842
+N - A (no asks vs baseline) [expl 101-105] mutual_acceptances             n= 5   -6.400 [ -8.367, -4.467]  SD of per-seed diff 2.554
+N - A (no asks vs baseline) [pooled] mutual_acceptances             n= 5   -6.400 [ -8.367, -4.467]  SD of per-seed diff 2.554
+A - R (baseline vs random) [expl 101-105] mutual_acceptances             n= 5   +0.200 [ -0.900, +1.300]  SD of per-seed diff 1.371
+A - R (baseline vs random) [pooled] mutual_acceptances             n= 5   +0.200 [ -0.900, +1.167]  SD of per-seed diff 1.371
+
+#### mutual_second_meeting_intention
+C - A (targeted vs baseline asks) [expl 101-105] mutual_second_meeting_intention n= 5   +0.300 [ -0.133, +0.733]  SD of per-seed diff 0.570
+C - A (targeted vs baseline asks) [conf 106-125] mutual_second_meeting_intention n=20   -0.108 [ -0.417, +0.192]  SD of per-seed diff 0.710
+C - A (targeted vs baseline asks) [pooled] mutual_second_meeting_intention n=25   -0.027 [ -0.293, +0.233]  SD of per-seed diff 0.693
+Fg - C (learned vs crude) [expl 101-105] mutual_second_meeting_intention n= 5   -0.467 [ -1.033, +0.100]  SD of per-seed diff 0.740
+Fg - C (learned vs crude) [conf 106-125] mutual_second_meeting_intention n=20   +0.125 [ -0.125, +0.383]  SD of per-seed diff 0.604
+Fg - C (learned vs crude) [pooled] mutual_second_meeting_intention n=25   +0.007 [ -0.247, +0.267]  SD of per-seed diff 0.662
+Fg - A [expl 101-105]              mutual_second_meeting_intention n= 5   -0.167 [ -0.367, +0.100]  SD of per-seed diff 0.312
+Fg - A [conf 106-125]              mutual_second_meeting_intention n=20   +0.017 [ -0.308, +0.325]  SD of per-seed diff 0.737
+Fg - A [pooled]                    mutual_second_meeting_intention n=25   -0.020 [ -0.287, +0.233]  SD of per-seed diff 0.672
+F - Fg (global vs greedy) [expl 101-105] mutual_second_meeting_intention n= 5   +0.033 [ -0.100, +0.200]  SD of per-seed diff 0.183
+F - Fg (global vs greedy) [conf 106-125] mutual_second_meeting_intention n=20   -0.008 [ -0.208, +0.183]  SD of per-seed diff 0.467
+F - Fg (global vs greedy) [pooled] mutual_second_meeting_intention n=25   -0.000 [ -0.160, +0.160]  SD of per-seed diff 0.422
+G - F (adaptive vs frozen) [expl 101-105] mutual_second_meeting_intention n= 5   +0.033 [ -0.200, +0.300]  SD of per-seed diff 0.321
+G - F (adaptive vs frozen) [conf 106-125] mutual_second_meeting_intention n=20   -0.058 [ -0.233, +0.092]  SD of per-seed diff 0.380
+G - F (adaptive vs frozen) [pooled] mutual_second_meeting_intention n=25   -0.040 [ -0.187, +0.093]  SD of per-seed diff 0.364
+N - A (no asks vs baseline) [expl 101-105] mutual_second_meeting_intention n= 5   -0.367 [ -0.533, -0.200]  SD of per-seed diff 0.217
+N - A (no asks vs baseline) [pooled] mutual_second_meeting_intention n= 5   -0.367 [ -0.533, -0.200]  SD of per-seed diff 0.217
+A - R (baseline vs random) [expl 101-105] mutual_second_meeting_intention n= 5   +0.200 [ -0.367, +0.700]  SD of per-seed diff 0.681
+A - R (baseline vs random) [pooled] mutual_second_meeting_intention n= 5   +0.200 [ -0.367, +0.700]  SD of per-seed diff 0.681
+
+#### msmi_per_100_arrived_members
+C - A (targeted vs baseline asks) [expl 101-105] msmi_per_100_arrived_members   n= 5   +0.150 [ -0.067, +0.367]  SD of per-seed diff 0.285
+C - A (targeted vs baseline asks) [conf 106-125] msmi_per_100_arrived_members   n=20   -0.054 [ -0.204, +0.096]  SD of per-seed diff 0.355
+C - A (targeted vs baseline asks) [pooled] msmi_per_100_arrived_members   n=25   -0.013 [ -0.147, +0.120]  SD of per-seed diff 0.347
+Fg - C (learned vs crude) [expl 101-105] msmi_per_100_arrived_members   n= 5   -0.233 [ -0.517, +0.050]  SD of per-seed diff 0.370
+Fg - C (learned vs crude) [conf 106-125] msmi_per_100_arrived_members   n=20   +0.062 [ -0.062, +0.200]  SD of per-seed diff 0.302
+Fg - C (learned vs crude) [pooled] msmi_per_100_arrived_members   n=25   +0.003 [ -0.123, +0.133]  SD of per-seed diff 0.331
+Fg - A [expl 101-105]              msmi_per_100_arrived_members   n= 5   -0.083 [ -0.200, +0.050]  SD of per-seed diff 0.156
+Fg - A [conf 106-125]              msmi_per_100_arrived_members   n=20   +0.008 [ -0.154, +0.163]  SD of per-seed diff 0.369
+Fg - A [pooled]                    msmi_per_100_arrived_members   n=25   -0.010 [ -0.140, +0.117]  SD of per-seed diff 0.336
+F - Fg (global vs greedy) [expl 101-105] msmi_per_100_arrived_members   n= 5   +0.017 [ -0.050, +0.100]  SD of per-seed diff 0.091
+F - Fg (global vs greedy) [conf 106-125] msmi_per_100_arrived_members   n=20   -0.004 [ -0.104, +0.092]  SD of per-seed diff 0.233
+F - Fg (global vs greedy) [pooled] msmi_per_100_arrived_members   n=25   -0.000 [ -0.080, +0.080]  SD of per-seed diff 0.211
+G - F (adaptive vs frozen) [expl 101-105] msmi_per_100_arrived_members   n= 5   +0.017 [ -0.100, +0.150]  SD of per-seed diff 0.160
+G - F (adaptive vs frozen) [conf 106-125] msmi_per_100_arrived_members   n=20   -0.029 [ -0.113, +0.050]  SD of per-seed diff 0.190
+G - F (adaptive vs frozen) [pooled] msmi_per_100_arrived_members   n=25   -0.020 [ -0.093, +0.047]  SD of per-seed diff 0.182
+N - A (no asks vs baseline) [expl 101-105] msmi_per_100_arrived_members   n= 5   -0.183 [ -0.267, -0.100]  SD of per-seed diff 0.109
+N - A (no asks vs baseline) [pooled] msmi_per_100_arrived_members   n= 5   -0.183 [ -0.267, -0.100]  SD of per-seed diff 0.109
+A - R (baseline vs random) [expl 101-105] msmi_per_100_arrived_members   n= 5   +0.100 [ -0.183, +0.350]  SD of per-seed diff 0.341
+A - R (baseline vs random) [pooled] msmi_per_100_arrived_members   n= 5   +0.100 [ -0.183, +0.350]  SD of per-seed diff 0.341
+
+#### Power: SD of per-seed primary-score difference vs minimum detectable difference (80% power, two-sided 5%)
+C - A    SD 0.355 -> MDE with  20 seeds per family: 0.222 MSMI/100
+C - A    SD 0.355 -> MDE with  40 seeds per family: 0.157 MSMI/100
+C - A    SD 0.355 -> MDE with 100 seeds per family: 0.099 MSMI/100
+Fg - A   SD 0.369 -> MDE with  20 seeds per family: 0.231 MSMI/100
+Fg - A   SD 0.369 -> MDE with  40 seeds per family: 0.163 MSMI/100
+Fg - A   SD 0.369 -> MDE with 100 seeds per family: 0.103 MSMI/100
+A_greedy                   per-seed primary score: mean 0.471 SD 0.280 -> SE of a 20-seed mean 0.063
+C_targeted_greedy_crude    per-seed primary score: mean 0.417 SD 0.328 -> SE of a 20-seed mean 0.073
+Fg_learned_greedy          per-seed primary score: mean 0.479 SD 0.322 -> SE of a 20-seed mean 0.072
+
+Funnel (confirmatory seeds):
+A_greedy                   n_ep=120 assign  8822 -> mutual 1264 (14.3%) -> dates  999 (79% of mutual) -> MSMI 113 (11% of dates); zero-MSMI episodes 51
+C_targeted_greedy_crude    n_ep=120 assign  8920 -> mutual 1307 (14.7%) -> dates  981 (75% of mutual) -> MSMI 100 (10% of dates); zero-MSMI episodes 58
+Fg_learned_greedy          n_ep=120 assign  8869 -> mutual 1295 (14.6%) -> dates  986 (76% of mutual) -> MSMI 115 (12% of dates); zero-MSMI episodes 52
+F_learned_global           n_ep=120 assign  8810 -> mutual 1367 (15.5%) -> dates 1086 (79% of mutual) -> MSMI 114 (10% of dates); zero-MSMI episodes 53
+G_learned_global_adaptive  n_ep=120 assign  8889 -> mutual 1331 (15.0%) -> dates 1029 (77% of mutual) -> MSMI 107 (10% of dates); zero-MSMI episodes 53

@@ -1,0 +1,48 @@
+name: "Final submission"
+description: "Submit the assessed build before 18 October, 23:59 IST"
+body:
+  - type: markdown
+    attributes:
+      value: "Public issue: do not include personal information, real-member data or credentials."
+  - type: textarea
+    id: team
+    attributes:
+      label: "Team name and size"
+      description: "One to four participants; do not include contact details."
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: "Public source URL and immutable version"
+      description: "Provide a repository URL and full 40-character commit SHA, or immutable public archive URL and full SHA-256 of its exact bytes; mutable download links are invalid."
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: "Report and results URLs"
+      description: "Link the technical report and machine-readable experiment results."
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: "Build and evaluation commands"
+      description: "Supply exact commands and confirm offline CPU inference."
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: "Assets, licences and tools"
+      description: "Declare models, data, libraries, training resources and coding tools."
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: "Validation and comparisons"
+      description: "Confirm all three baselines, all six scenario families, an ablation and successful Docker evaluation."
+    validations:
+      required: true

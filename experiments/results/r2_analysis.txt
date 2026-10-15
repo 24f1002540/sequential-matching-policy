@@ -1,0 +1,12 @@
+complete seeds 40
+introductions              S-C   +0.242 [  -0.850,   +1.329]  S mean 73.588  C mean 73.346  seeds up/down 21/18
+mutual acceptances         S-C   +0.121 [  -0.442,   +0.725]  S mean 10.867  C mean 10.746  seeds up/down 18/22
+dates                      S-C   +0.113 [  -0.408,   +0.688]  S mean 8.596  C mean 8.483  seeds up/down 18/21
+MSMI events                S-C   -0.008 [  -0.154,   +0.133]  S mean 0.717  C mean 0.725  seeds up/down 16/17
+coverage                   S-C   +0.001 [  +0.000,   +0.002]  S mean 0.332  C mean 0.331  seeds up/down 21/16
+ask cost                   S-C   -0.013 [  -0.100,   +0.087]  S mean 192.525  C mean 192.537  seeds up/down 1/3
+primary score (MSMI/100)   S-C   -0.004 [  -0.077,   +0.069]  S mean 0.358  C mean 0.362  seeds up/down 16/17
+MSMI events total: C 174  S 172 ; zero-MSMI episodes C 115 S 116 of 240
+max call secs C 0.21 S 0.26
+GATES  G2 intro lower>0: False | G3 MSMI lower>-0.10: False | G4 mutual point>=0: True | G5 cost diff upper<=1: True
+ADOPT S: False

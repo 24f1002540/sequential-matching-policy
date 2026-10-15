@@ -1,0 +1,14 @@
+ROUND 2 PRE-SPECIFICATION (written 15 Oct 2026, before any seed 201-240 episode was run)
+
+Candidate policies: C (targeted hard asks + supplied greedy; the safe core) and S (same asks + scarcity-weighted
+max-cardinality matching, weight 1/deg(a)+1/deg(b)+0.01*similarity). Seeds 201-240 (40 seeds) x six families = 240 episodes per arm.
+No seed in 201-240 has been used for any earlier analysis. Intervals: 95% bootstrap resampling seeds (paired).
+
+Adoption rule for S (all must hold, otherwise the submission keeps C):
+  G1  zero invalid episodes through the JSON protocol for S;
+  G2  S - C introductions per episode: lower bound of the interval > 0;
+  G3  S - C MSMI events per episode: lower bound > -0.10 (no material loss; MSMI itself cannot be resolved at this size);
+  G4  S - C mutual acceptances per episode: point estimate >= 0;
+  G5  S - C clarification cost: not larger by more than 1 unit per episode.
+Reported regardless: whole funnel, coverage, waiting, cost, per-family results, runtime.
+Tie-break note: organiser ranking uses score, then coverage, then mutual acceptances, then lower ask cost, then inference time.

@@ -1,0 +1,105 @@
+{
+  "pools": [
+    {
+      "feedback_events": 123,
+      "introductions": 57,
+      "members": 200,
+      "pool_id": "public_01",
+      "seed": 20261000,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 120,
+      "introductions": 57,
+      "members": 200,
+      "pool_id": "public_02",
+      "seed": 20261001,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 125,
+      "introductions": 56,
+      "members": 200,
+      "pool_id": "public_03",
+      "seed": 20261002,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 119,
+      "introductions": 62,
+      "members": 200,
+      "pool_id": "public_04",
+      "seed": 20261003,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 178,
+      "introductions": 85,
+      "members": 200,
+      "pool_id": "public_05",
+      "seed": 20261004,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 125,
+      "introductions": 59,
+      "members": 200,
+      "pool_id": "public_06",
+      "seed": 20261005,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 139,
+      "introductions": 64,
+      "members": 200,
+      "pool_id": "public_07",
+      "seed": 20261006,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 105,
+      "introductions": 53,
+      "members": 200,
+      "pool_id": "public_08",
+      "seed": 20261007,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 113,
+      "introductions": 55,
+      "members": 200,
+      "pool_id": "public_09",
+      "seed": 20261008,
+      "snapshot_day": 30
+    },
+    {
+      "feedback_events": 123,
+      "introductions": 65,
+      "members": 200,
+      "pool_id": "public_10",
+      "seed": 20261009,
+      "snapshot_day": 30
+    }
+  ],
+  "schema_version": "1.0.0",
+  "splits": {
+    "development_test": [
+      "public_09",
+      "public_10"
+    ],
+    "train": [
+      "public_01",
+      "public_02",
+      "public_03",
+      "public_04",
+      "public_05",
+      "public_06"
+    ],
+    "validation": [
+      "public_07",
+      "public_08"
+    ]
+  },
+  "status": "participant_release",
+  "synthetic": true
+}
