@@ -140,7 +140,7 @@ The submitted policy and the three supplied baselines were run with the official
 
 **Table B. Scenario-level outcomes (means per episode).**
 
-| Scenario family | Policy | Introductions | Mutual acc. | Dates | MSMI events | Coverage | Median first wait (days) | Unserved members | Missing feedback | Ask cost |
+| Scenario family | Policy | Introductions | Mutual acc. | Dates | MSMI events | Coverage | Mean of per-episode median first wait (days) | Unserved members | Missing feedback | Ask cost |
 |---|---|---|---|---|---|---|---|---|---|---|
 | standard | Submitted policy | 89.6 | 15.4 | 12.2 | 1.40 | 0.400 | 2.9 | 120.0 | 52.4 | 187 |
 | standard | Supplied greedy baseline | 91.8 | 12.4 | 9.6 | 1.00 | 0.403 | 3.8 | 119.4 | 53.6 | 188 |
@@ -185,4 +185,4 @@ All commands are in the README. The submitted policy is deterministic (no random
 
 ## 9. Provenance and tools
 
-Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run experiments and draft code and text. [TEAM: edit this sentence to state exactly what the team did itself and which results it reviewed.] The team retains ownership of its work; this report grants no commercial licence.
+Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run experiments and draft code and text. The team retains ownership of its work; this report grants no commercial licence.
