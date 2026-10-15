@@ -1,6 +1,6 @@
 # Technical report: a sequential matching policy under uncertainty
 
-**Team:** [TEAM NAME] ([Member 1], [Member 2], [Member 3], [Member 4]). **Repository:** https://github.com/24f1002540/sequential-matching-policy
+**Team:** Danpotatoes: Dan George (roll no. 25f3001550) and Pranav Mesta (roll no. 24f1002540). **Repository:** https://github.com/24f1002540/sequential-matching-policy
 **Release:** participant kit 1.0.0 (synthetic data only). **Submitted version:** see the commit SHA in the Final submission issue.
 
 ## 1. Summary
@@ -65,6 +65,10 @@ We did not use a learned probability model in the submission. Our held-out check
 
 On 24 episodes (seeds 106 to 109, six families) we tracked which pairs were ever feasible among available members and which were introduced. On average 100.2 pairs are ever feasible per episode, 80.3 (80%) are introduced, and an offline supply bound (every non-declined constraint known) is 113.3, so clarification already reaches 88% of what could be feasible. On a typical day only about 2.7 feasible pairs exist among 200 members, and members sit idle with an available option on 0.49% of member-days. On average 32% of members (range 27% to 47%) decline at least one hard field and can never be introduced. The funnel is also thin: of 8,822 introductions by the supplied baseline over 120 confirmatory episodes, 14.3% became mutual acceptances, 79% of those led to a date, and 11% of dates produced a mutual second-meeting Yes (113 MSMI events, about 0.9 per episode). 43% of episodes score zero.
 
+![Funnel: where introductions are lost](figures/funnel.png)
+
+*Figure 1. Average funnel per 200-member episode for the submitted policy (Round 1 confirmatory seeds): about 74 introductions yield about 11 mutual acceptances, 8 dates and 0.8 MSMI events.*
+
 ### 5.2 Candidate comparison (Round 1 confirmatory seeds 106 to 125)
 
 Arms: A supplied baseline asks plus greedy; C targeted hard asks plus supplied greedy (the submitted policy); Fg learned edge values plus soft asks, greedy; F the same with global maximum-weight matching; G F plus online adaptation; S targeted asks plus scarcity-weighted maximum-cardinality matching; O an offline oracle ranking (a bound, not a policy).
@@ -80,6 +84,10 @@ Arms: A supplied baseline asks plus greedy; C targeted hard asks plus supplied g
 | G  F + online adaptation | 0.446 | 0.339 | 5.55 | 239 | 74.1 | 11.1 | 8.6 | 107 | 53 / 120 |
 | S  targeted asks + scarcity-weighted matching | 0.342 | 0.340 | 5.53 | 197 | 75.6 | 11.1 | 8.3 | 82 | 69 / 120 |
 | O  oracle ranking (offline bound, not a policy) | 0.433 | 0.337 | 5.58 | 197 | 73.6 | 11.2 | 8.7 | 104 | 59 / 120 |
+
+![Paired contrasts](figures/forest.png)
+
+*Figure 2. Paired differences in primary score (Table 2). Every interval includes zero.*
 
 **Table 2. Confirmatory contrasts (first minus second; 20 seeds; MSMI events per episode, the primary score is 0.5 times this).**
 
@@ -138,6 +146,10 @@ The submitted policy and the three supplied baselines were run with the official
 | Supplied no-clarification | 30 / 30 | 0.183 | 0.137 | 1.98 | 0 | 24.1 | 11 |
 | Supplied random-feasible | 30 / 30 | 0.267 | 0.356 | 5.08 | 197 | 22.5 | 16 |
 
+![Official evaluator results](figures/official.png)
+
+*Figure 3. Table A as a chart (exploratory seeds 101 to 105; see the reading note above).*
+
 **Table B. Scenario-level outcomes (means per episode).**
 
 | Scenario family | Policy | Introductions | Mutual acc. | Dates | MSMI events | Coverage | Mean of per-episode median first wait (days) | Unserved members | Missing feedback | Ask cost |
@@ -169,6 +181,13 @@ The submitted policy and the three supplied baselines were run with the official
 
 *Reading.* The submitted policy produced no invalid episode, its slowest episode used 47.7 s of inference across 120 calls (the per-call limit is 10 s; the slowest single call in our in-process runs was 0.26 s), and its ask cost is 2 units below the supplied baseline's on these seeds (and 3.3 units on the 20 confirmatory seeds). Its per-episode inference time is higher than the supplied baselines' because it evaluates pair status for the available population in both the ask and match calls and again in the guard; this affects only the last tie-break.
 
+### 6.1 Further validity, decision trace and robustness checks
+
+* **Wider official-protocol run.** The submitted policy was run through the unmodified evaluator protocol on ten further seeds (106 to 115, six families, 60 episodes; `results/validity_a.json`, `results/validity_b.json`). All 60 episodes were valid; the slowest took 35.0 s of inference over 120 calls (mean 24.7 s). The primary score on these seeds was 0.250 (30 MSMI events), coverage 0.337 and ask cost 197.5. This is far below the 0.517 on seeds 101 to 105 and is the same size of swing that Section 7 attributes to noise; it is another reason we do not claim a primary-score advantage.
+* **Fuzzing (`test_fuzz.py`).** States from simulated episodes were mutated (blank or declined fields, unavailable members, empty or tiny populations, odd budgets, duplicated introductions, shuffled order) and several malformed requests were sent. The policy returned a valid action every time, and a malformed request produced an empty valid action instead of an error.
+* **Scale (`test_scale.py`).** Populations of 200 and 400 members over 20 days: slowest single call 0.35 s and 0.81 s, responses under 2 KiB. A 200-member request is about 397 KiB, so the harness's own 1 MiB request limit is reached at roughly 500 members, long before the 10 s limit would matter for this policy.
+* **Decision trace (`explain.py`, `explain_episode.py`).** For every ask the trace records the member, field, cost, credit and the pairs the answer could unlock; for every introduction it records the agreeing soft fields, the similarity score and the member's remaining options. `test_explain.py` confirms the trace never changes a decision (identical actions with and without it).
+
 ## 7. Limitations
 
 * **Public worlds only.** The six public scenario families approximate, but are not, the private worlds. Effects that vanish here could appear there and vice versa.
@@ -176,13 +195,14 @@ The submitted policy and the three supplied baselines were run with the official
 * **Selective labels.** Outcomes exist only for the pairs we introduce, and propensities are null in the supplied logs, so we make no inverse-propensity claims and compare complete policies on identical seeds instead.
 * **Offline analyses use simulator internals** (the supply bound, the oracle ranking and the expected-outcome measure) for bounding and variance reduction only. No submitted policy reads them, and no policy parameter was fitted to them.
 * **Exploratory against confirmatory.** Only K1 to K4 and the Round 2 adoption rule were specified before the confirmatory runs. Later contrasts are labelled and are less strictly confirmatory. We did not adjust for multiple comparisons.
-* **Container check.** The authoring sandbox had no Docker daemon, so the container build was verified by the team on their own machine (see the README and the Final submission issue).
+* **Container check.** The authoring sandbox had no Docker daemon, so the container build and the offline container evaluation (`evaluate.py --image`, seed 101) were verified on GitHub Actions for the public repository: both the organisers' `verify.yml` workflow (tests on Python 3.10 and 3.12, data verification, local and container evaluation) and our `container-check.yml` workflow passed on commit 4f1c513 (an earlier commit failed because our Dockerfile copied a file that the supplied `.dockerignore` excluded; we restored the supplied Dockerfile). The container check covers one episode, not every assessed episode.
 * **Synthetic only.** Nothing here estimates real-world compatibility or relationship outcomes. A real service would need an adapter, validation on authorised data, current constraint checks and human review.
 
 ## 8. Reproducibility
 
-All commands are in the README. The submitted policy is deterministic (no random numbers; ties are broken by member identifier) and has no training seeds. Experiment scripts record seeds and variants; raw per-episode results are under `results/` and `experiments/`. The pre-specification files (`PRESPEC.txt`, `PRESPEC_R2.txt`) are included with their dates.
+All commands are in the README, and `bash run_all.sh` runs the tests, scale check and official-protocol evaluation in one step; `make_figures.py` redraws the figures from the numbers printed here. The submitted policy is deterministic (no random numbers; ties are broken by member identifier) and has no training seeds. Experiment scripts record seeds and variants; raw per-episode results are under `results/` and `experiments/`. The pre-specification files (`PRESPEC.txt`, `PRESPEC_R2.txt`) are included with their dates.
 
 ## 9. Provenance and tools
 
 Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run experiments and draft code and text. The team retains ownership of its work; this report grants no commercial licence.
+Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run the experiments and the policy code, and draft the Round 1 note, the code and this report. The team chose the problem track, directed the work and its scope, supplied the repository and accounts, and is responsible for the submission; the team's own review of individual results is not claimed beyond that. The team retains ownership of its work; this report grants no commercial licence.
