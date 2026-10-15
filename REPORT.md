@@ -119,6 +119,10 @@ An offline expected-outcome measure (simulator true probabilities summed over th
 
 *Result.* The introduction and MSMI conditions failed (lower bounds -0.85 and -0.154), so S was **not adopted**. The hypothesis is not supported: throughput did not rise. This matches the supply analysis. With so few feasible pairs per day, allocation has almost nothing to rearrange.
 
+### 5.5 Clarification ordering: why we did not test further tweaks
+
+The daily clarification budget (4 hard-constraint bundles) binds on some days: in a diagnostic on 6 episodes (seeds 201 and 202, standard, cold start and delayed families), 83 of 360 days had more askable members than budget, although total spending (about 195 of 720 units per episode) shows the backlog drains later. We therefore tried an alternative ordering, *pair completion* (greedy marginal credit that favours finishing pairs by choosing partners together). On 120 days of two episodes it selected a different member set on only 5 days (4%), and on the one episode we ran fully it produced identical results to the submitted rule. An effect that rarely changes any action cannot be resolved with the seeds we can afford, so we did not run a confirmatory test and kept the simpler rule. This is a diagnostic, not a pre-specified comparison (`experiments/diag_budget.py`, `experiments/diag_t.py`, `experiments/t_arm.py`).
+
 ## 6. Final evaluation through the official evaluator
 
 The submitted policy and the three supplied baselines were run with the official `evaluate.py` protocol (a separate process per call, 1 MiB and 10 s limits checked), on seeds 101 to 105 and all six scenario families (30 episodes per policy). All 120 episodes were valid. Raw results: `results/final.json`, `results/baseline_greedy.json`, `results/baseline_no_asks.json`, `results/baseline_random.json`.
