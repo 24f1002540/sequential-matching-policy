@@ -12,13 +12,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Policy tests
-        run: python -m unittest -v test_policy
+        run: python -m unittest -v test_policy test_fuzz test_regression
       - name: Verify data
         run: python verify_data.py
       - name: Build image (no credentials, no network at run time)
         run: docker build -t sequential-policy:submission .
-      - name: Container evaluation (official evaluator, offline container, 1 episode)
-        run: python evaluate.py --image sequential-policy:submission --seeds 101 --output results/container_check.json
+      - name: Container evaluation (official evaluator, offline container, all six families, seed 101)
+        run: python evaluate.py --image sequential-policy:submission --seeds 101 --variants all --output results/container_check.json
       - name: Show result
         if: always()
         run: cat results/container_check.json || true

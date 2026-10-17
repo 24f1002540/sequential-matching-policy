@@ -1,92 +1,92 @@
-{"seed": 111, "variant": "development", "valid": true, "msmi": 0}
-{"seed": 112, "variant": "development", "valid": true, "msmi": 1}
-{"seed": 113, "variant": "development", "valid": true, "msmi": 1}
-{"seed": 114, "variant": "development", "valid": true, "msmi": 0}
-{"seed": 115, "variant": "development", "valid": true, "msmi": 0}
+{"seed": 111, "variant": "development", "valid": true, "msmi": 1}
+{"seed": 112, "variant": "development", "valid": true, "msmi": 0}
+{"seed": 113, "variant": "development", "valid": true, "msmi": 3}
+{"seed": 114, "variant": "development", "valid": true, "msmi": 1}
+{"seed": 115, "variant": "development", "valid": true, "msmi": 1}
 {"seed": 111, "variant": "sparse", "valid": true, "msmi": 0}
 {"seed": 112, "variant": "sparse", "valid": true, "msmi": 0}
 {"seed": 113, "variant": "sparse", "valid": true, "msmi": 0}
 {"seed": 114, "variant": "sparse", "valid": true, "msmi": 0}
 {"seed": 115, "variant": "sparse", "valid": true, "msmi": 0}
-{"seed": 111, "variant": "cold_start", "valid": true, "msmi": 1}
-{"seed": 112, "variant": "cold_start", "valid": true, "msmi": 0}
-{"seed": 113, "variant": "cold_start", "valid": true, "msmi": 1}
+{"seed": 111, "variant": "cold_start", "valid": true, "msmi": 2}
+{"seed": 112, "variant": "cold_start", "valid": true, "msmi": 2}
+{"seed": 113, "variant": "cold_start", "valid": true, "msmi": 2}
 {"seed": 114, "variant": "cold_start", "valid": true, "msmi": 0}
-{"seed": 115, "variant": "cold_start", "valid": true, "msmi": 1}
-{"seed": 111, "variant": "delayed", "valid": true, "msmi": 2}
+{"seed": 115, "variant": "cold_start", "valid": true, "msmi": 0}
+{"seed": 111, "variant": "delayed", "valid": true, "msmi": 1}
 {"seed": 112, "variant": "delayed", "valid": true, "msmi": 0}
-{"seed": 113, "variant": "delayed", "valid": true, "msmi": 0}
-{"seed": 114, "variant": "delayed", "valid": true, "msmi": 0}
+{"seed": 113, "variant": "delayed", "valid": true, "msmi": 1}
+{"seed": 114, "variant": "delayed", "valid": true, "msmi": 1}
 {"seed": 115, "variant": "delayed", "valid": true, "msmi": 0}
-{"seed": 111, "variant": "shift", "valid": true, "msmi": 0}
-{"seed": 112, "variant": "shift", "valid": true, "msmi": 1}
-{"seed": 113, "variant": "shift", "valid": true, "msmi": 1}
+{"seed": 111, "variant": "shift", "valid": true, "msmi": 1}
+{"seed": 112, "variant": "shift", "valid": true, "msmi": 0}
+{"seed": 113, "variant": "shift", "valid": true, "msmi": 3}
 {"seed": 114, "variant": "shift", "valid": true, "msmi": 0}
 {"seed": 115, "variant": "shift", "valid": true, "msmi": 0}
-{"seed": 111, "variant": "drift", "valid": true, "msmi": 0}
-{"seed": 112, "variant": "drift", "valid": true, "msmi": 1}
-{"seed": 113, "variant": "drift", "valid": true, "msmi": 1}
-{"seed": 114, "variant": "drift", "valid": true, "msmi": 0}
-{"seed": 115, "variant": "drift", "valid": true, "msmi": 0}
+{"seed": 111, "variant": "drift", "valid": true, "msmi": 1}
+{"seed": 112, "variant": "drift", "valid": true, "msmi": 0}
+{"seed": 113, "variant": "drift", "valid": true, "msmi": 3}
+{"seed": 114, "variant": "drift", "valid": true, "msmi": 1}
+{"seed": 115, "variant": "drift", "valid": true, "msmi": 1}
 {
   "eligible": true,
-  "primary_score": 0.18333333333333335,
+  "primary_score": 0.41666666666666663,
   "scenario_means": {
     "cold_start": {
-      "msmi_per_100_arrived_members": 0.3,
-      "coverage": 0.323,
-      "mutual_acceptances_per_100": 4.7,
-      "ask_cost": 229.8,
-      "inference_seconds": 24.109833758000196
+      "msmi_per_100_arrived_members": 0.6,
+      "coverage": 0.324,
+      "mutual_acceptances_per_100": 5.7,
+      "ask_cost": 232.8,
+      "inference_seconds": 14.66884634480075
     },
     "delayed": {
-      "msmi_per_100_arrived_members": 0.2,
-      "coverage": 0.372,
-      "mutual_acceptances_per_100": 5.4,
-      "ask_cost": 188.4,
-      "inference_seconds": 22.858505798000145
+      "msmi_per_100_arrived_members": 0.3,
+      "coverage": 0.37,
+      "mutual_acceptances_per_100": 5.3,
+      "ask_cost": 189.6,
+      "inference_seconds": 14.457085279599596
     },
     "development": {
-      "msmi_per_100_arrived_members": 0.2,
-      "coverage": 0.373,
-      "mutual_acceptances_per_100": 5.5,
-      "ask_cost": 187.8,
-      "inference_seconds": 24.22367336440003
+      "msmi_per_100_arrived_members": 0.6,
+      "coverage": 0.371,
+      "mutual_acceptances_per_100": 5.4,
+      "ask_cost": 189.6,
+      "inference_seconds": 14.66277502300045
     },
     "drift": {
-      "msmi_per_100_arrived_members": 0.2,
-      "coverage": 0.373,
-      "mutual_acceptances_per_100": 5.1,
-      "ask_cost": 187.8,
-      "inference_seconds": 22.35863169559907
+      "msmi_per_100_arrived_members": 0.6,
+      "coverage": 0.371,
+      "mutual_acceptances_per_100": 5.0,
+      "ask_cost": 189.6,
+      "inference_seconds": 14.486095399198257
     },
     "shift": {
-      "msmi_per_100_arrived_members": 0.2,
-      "coverage": 0.372,
-      "mutual_acceptances_per_100": 4.3,
-      "ask_cost": 187.8,
-      "inference_seconds": 23.725353453199865
+      "msmi_per_100_arrived_members": 0.4,
+      "coverage": 0.371,
+      "mutual_acceptances_per_100": 4.7,
+      "ask_cost": 189.6,
+      "inference_seconds": 15.028552087399202
     },
     "sparse": {
       "msmi_per_100_arrived_members": 0.0,
-      "coverage": 0.174,
-      "mutual_acceptances_per_100": 2.0,
-      "ask_cost": 181.8,
-      "inference_seconds": 32.6921346134
+      "coverage": 0.176,
+      "mutual_acceptances_per_100": 1.8,
+      "ask_cost": 191.4,
+      "inference_seconds": 15.327742055999078
     }
   },
   "overall": {
-    "msmi_per_100_arrived_members": 0.18333333333333335,
-    "coverage": 0.33116666666666666,
-    "mutual_acceptances_per_100": 4.5,
-    "ask_cost": 193.9,
-    "inference_seconds": 24.99468878043322
+    "msmi_per_100_arrived_members": 0.41666666666666663,
+    "coverage": 0.3305,
+    "mutual_acceptances_per_100": 4.65,
+    "ask_cost": 197.1,
+    "inference_seconds": 14.771849364999555
   },
   "ranking_key_descending": [
-    0.18333333333333335,
-    0.33116666666666666,
-    4.5,
-    -193.9,
-    -24.99468878043322
+    0.41666666666666663,
+    0.3305,
+    4.65,
+    -197.1,
+    -14.771849364999555
   ]
 }

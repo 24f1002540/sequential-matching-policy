@@ -1,0 +1,16 @@
+R3 seeds 5001-5040: 40 seeds, C minus A = -0.098 [-0.171, -0.025]; C better on 12 seeds, worse on 24
+   condition (1) point estimate negative: True
+Confirmatory 106-125: 20 seeds, C minus A = -0.054 [-0.208, +0.092]
+Per-seed SD of C minus A (own blocks): 0.277
+POOLED over 300 seeds (8 blocks): -0.047 [-0.078, -0.015]
+   condition (2) upper bound < 0: True
+   without 1101-1140 (largest gap): -0.032
+
+Measure | A (supplied asks) | C (targeted asks) | C minus A [95% over seeds]
+Introductions | 72.76 | 73.85 | +1.09 [+0.22, +1.97]
+Mutual acceptances | 10.47 | 10.27 | -0.20 [-0.77, +0.37]
+Dates | 8.26 | 8.21 | -0.05 [-0.61, +0.48]
+MSMI events | 0.75 | 0.55 | -0.20 [-0.35, -0.05]
+Ask cost (units) | 195.55 | 192.47 | -3.08 [-3.88, -2.36]
+Zero-MSMI episodes: A 123 / 240, C 142 / 240
+Primary score: A 0.375, C 0.277

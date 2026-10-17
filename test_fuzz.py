@@ -1,5 +1,6 @@
 """Fuzz tests: schema-valid but unusual states must never raise and must give valid actions;
-garbage requests must return an empty, valid action (never an exception or a non-zero exit)."""
+malformed requests whose JSON parses and whose state is present or null must return an empty, valid action
+(never an exception or a non-zero exit). Input that is not a JSON object is outside the official protocol."""
 import copy, json, random, subprocess, sys, unittest
 from kit import HARD, SOFT, Simulator, generate, eligibility
 import policy
@@ -88,7 +89,9 @@ class FuzzTests(unittest.TestCase):
                 req = dict(g, phase=phase); out = policy.decide(req) if g.get('state') is not None else None
                 if out is None:
                     p = subprocess.run([sys.executable, 'policy.py'], input=json.dumps(req).encode(), capture_output=True)
-                    # a null state cannot be answered; the process must still not crash with a traceback exit
+                    self.assertEqual(p.returncode, 0)          # a null state is answered, not crashed on
+                    validate_response(json.loads(p.stdout), phase)
+                    self.assertEqual(json.loads(p.stdout)['asks' if phase == 'ask' else 'pairs'], [])
                     continue
                 validate_response(json.loads(json.dumps(out)), phase)
                 self.assertEqual(out['asks' if phase == 'ask' else 'pairs'], [])

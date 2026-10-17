@@ -84,6 +84,14 @@ class PolicyTests(unittest.TestCase):
             self.assertFalse(policy.unresolvable(byid[i]),
                              'targeted asks include declined member %s' % i)
 
+    def test_submission_asks_are_the_supplied_rule_behind_the_guard(self):
+        sim = Simulator(generate(907, 60, 'evaluation', 'development'))
+        for _ in range(8):
+            s = sim.observe()
+            asks = policy.decide({'phase': 'ask', 'state': s, 'memory': {}})['asks']
+            self.assertEqual(asks, policy.guard_asks(s, policy.baseline_asks(s)))
+            sim.resolve_asks(asks); sim.advance(policy.decide({'phase': 'match', 'state': sim.observe(), 'memory': {}})['pairs'])
+
     def test_guard_pairs_drops_unknown_constraint_pairs(self):
         sim = Simulator(generate(906, 60, 'evaluation', 'development'))
         s = sim.observe()

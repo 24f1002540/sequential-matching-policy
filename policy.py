@@ -1,9 +1,10 @@
 """Round 2 submission policy. JSON stdin/stdout (docs/POLICY_INTERFACE.md).
 
-Design (see REPORT.md): reciprocal feasibility from the supplied `eligibility`, targeted hard-constraint
-clarification, supplied similarity-greedy allocation, and an independent output guard. No learned asset,
+Design (see REPORT.md): reciprocal feasibility from the supplied `eligibility`, the supplied hard-constraint
+clarification rule, supplied similarity-greedy allocation, and an independent output guard. No learned asset,
 no network, no hidden-state access. The only inputs are the observable JSON request.
-Any internal error returns an empty (always valid) action.
+Any error raised while deciding returns an empty (always valid) action. (Input that is not a JSON object is
+not something the official harness sends and ends the process with an error.)
 """
 import argparse
 import itertools
@@ -94,10 +95,13 @@ def decide(request, mode='submission'):
     try:
         if mode == 'no_asks':
             asks = []
-        elif mode == 'greedy':
-            asks = baseline_asks(state)
-        else:
+        elif mode == 'targeted':
+            # Round 1/2 candidate (arm C in REPORT.md): kept for the record, not used by the submission.
+            # On 40 fresh seeds it scored below the supplied asking rule (REPORT.md section 5.7).
             asks = targeted_hard_asks(state)
+        else:
+            # 'submission' and 'greedy': the supplied clarification rule (arm A), behind the guard below.
+            asks = baseline_asks(state)
         if phase == 'ask':
             return {'asks': guard_asks(state, asks), 'memory': memory}
         return {'pairs': guard_pairs(state, baseline_match(state)), 'memory': memory}

@@ -1,4 +1,6 @@
 # Only needed to redraw the report figures / rerun the research scripts. The policy itself needs none of these.
+# Versions used for the reported runs (pip install -r requirements-dev.txt).
 matplotlib==3.11.2
 numpy
 networkx
+scikit-learn

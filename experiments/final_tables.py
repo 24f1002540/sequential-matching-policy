@@ -1,6 +1,7 @@
+import os; os.chdir(os.path.dirname(os.path.abspath(__file__)))  # paths below are relative to experiments/
 import glob, json, collections, random, statistics as st
 FAM=['development','sparse','cold_start','delayed','shift','drift']
-EXPL='/mnt/user-data/outputs/round1_v2/supplementary/eval2_results.jsonl'
+EXPL='results/eval2_results.jsonl'
 def load(fs): return [json.loads(l) for f in fs for l in open(f)]
 ex=load([EXPL]); co=load(sorted(glob.glob('results/conf_[01].jsonl')+glob.glob('results/conf2_[01].jsonl')+glob.glob('results/oracle_[01].jsonl')+glob.glob('results/s_[01].jsonl')))
 def idx(rows):

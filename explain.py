@@ -41,10 +41,13 @@ def explain_asks(state, asks):
         i = ask['member_id']
         rows.append({'member_id': i, 'field': ask['field'], 'cost': 3 if ask['field'] == 'constraints' else 1,
                      'credit': round(credit.get(i, 0.0), 3), 'pairs_it_can_unlock': len(unlocks.get(i, [])),
-                     'reason': 'its answer is still missing for %d pair(s) that are otherwise not excluded (credit %.2f); '
-                               'asked the hard-constraint bundle in descending credit order' % (len(unlocks.get(i, [])), credit.get(i, 0.0))})
-    return rows, {'askable_members': len(credit), 'budget_remaining_before': state['ask_budget_remaining'],
-                  'asked': len(asks), 'budget_binding': len(credit) > len(asks),
+                     'reason': 'available, has at least one unknown hard-constraint field and has declined none, so the supplied rule asks it '
+                               'for the 3-unit hard-constraint bundle (members are taken in list order until the budget is spent); '
+                               'its answer is currently missing for %d otherwise-open pair(s)' % len(unlocks.get(i, []))})
+    eligible = sum(1 for m in state['members'] if m['available'] and any(m['fields'][k] is None for k in HARD)
+                   and not any(m['field_status'][k] == 'declined' for k in HARD))
+    return rows, {'askable_members': eligible, 'budget_remaining_before': state['ask_budget_remaining'],
+                  'asked': len(asks), 'budget_binding': eligible > len(asks),
                   'unresolvable_members': sum(policy.unresolvable(m) for m in state['members'] if m['available'])}
 
 

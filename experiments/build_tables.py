@@ -1,8 +1,9 @@
 """Generate the Markdown evidence tables for the note directly from raw results (no manual transcription)."""
+import os; os.chdir(os.path.dirname(os.path.abspath(__file__)))  # paths below are relative to experiments/
 import glob, json, collections, random, statistics as st, math
 
 FAM = ['development', 'sparse', 'cold_start', 'delayed', 'shift', 'drift']
-EXPL = '/mnt/user-data/outputs/round1_v2/supplementary/eval2_results.jsonl'
+EXPL = 'results/eval2_results.jsonl'
 LAB = {'R_random': 'R  random-feasible (supplied)', 'N_no_asks': 'N  no clarification (supplied)', 'A_greedy': 'A  baseline asks + greedy (supplied)',
        'C_targeted_greedy_crude': 'C  targeted asks + supplied greedy', 'Fg_learned_greedy': 'Fg learned values + soft asks, greedy',
        'F_learned_global': 'F  learned values + soft asks, global', 'G_learned_global_adaptive': 'G  F + online adaptation', 'S_scarcity': 'S  targeted asks + scarcity-weighted matching', 'O_oracle_global': 'O  ORACLE bound (offline only)'}

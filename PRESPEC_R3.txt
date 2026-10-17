@@ -1,0 +1,18 @@
+PRE-SPECIFICATION R3 (written 2026-10-17 06:25 UTC before any seed 5001-5040 episode was run; self-attested, not externally timestamped)
+
+Question. Teammate studies E1-E5 and the final champion comparison (seeds 401-440, 601-640, 801-840, 1101-1140, 1301-1340, 3201-3240) all
+report the submitted policy (C: targeted hard asks + supplied greedy matcher) against the supplied greedy baseline (A: baseline asks +
+supplied greedy matcher). Nearly every paired difference C minus A on the primary score is negative (pooled about -0.04), though each
+interval alone includes zero. We test this on fresh seeds before deciding whether to change the submitted policy.
+
+Design. Seeds 5001-5040, all six families, arms A and C, identical worlds, in-process replica of evaluate.episode (digest-checked
+against the official evaluator in test_regression.py). Primary measure: C minus A, primary score (mean of family means), 95% percentile
+bootstrap resampling seeds (10,000 draws, rng seed 11).
+
+Decision rule (fixed now).
+  Switch the submitted policy's clarification to the supplied baseline_asks (arm A) if and only if BOTH hold:
+   (1) on seeds 5001-5040, C minus A has a negative point estimate; and
+   (2) the pooled estimate over all fresh paired blocks (our 106-125 and 5001-5040, plus the teammate blocks listed above, weighted by
+       number of seeds) has an upper 95% bound below zero.
+  Otherwise keep C. Either way the result is reported in REPORT.md.
+Not allowed after seeing results: changing the rule, the seed set, or which blocks are pooled.

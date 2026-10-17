@@ -1,6 +1,7 @@
 """Confirmatory analysis for seeds 106-125 (pre-specified in results/PRESPEC.txt).
 Inputs: results/conf_*.jsonl (arms A, C, Fg) and results/conf2_*.jsonl (arms F, G).
 Bootstrap resamples SEEDS (clusters of the six scenario families), not single episodes."""
+import os; os.chdir(os.path.dirname(os.path.abspath(__file__)))  # paths below are relative to experiments/
 import glob, json, collections, random, statistics as st, sys
 
 FAM = ['development', 'sparse', 'cold_start', 'delayed', 'shift', 'drift']
@@ -9,6 +10,7 @@ NAME = {'A_greedy': 'A', 'C_targeted_greedy_crude': 'C', 'Fg_learned_greedy': 'F
 rows = []
 for f in sorted(glob.glob('results/conf_*.jsonl') + glob.glob('results/conf2_*.jsonl')):
     rows += [json.loads(l) for l in open(f)]
+if not rows: sys.exit('no rows found in results/conf_*.jsonl')
 by = collections.defaultdict(dict)                    # (seed, family) -> arm -> row
 for r in rows:
     by[(r['seed'], r['variant'])][r['arm']] = r

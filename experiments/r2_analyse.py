@@ -1,3 +1,4 @@
+import os; os.chdir(os.path.dirname(os.path.abspath(__file__)))  # paths below are relative to experiments/
 import json, random, statistics as st, collections
 FAM = ['development', 'sparse', 'cold_start', 'delayed', 'shift', 'drift']
 def load(f): return [json.loads(l) for l in open(f)]

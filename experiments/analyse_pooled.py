@@ -1,9 +1,10 @@
 """Pooled (exploratory seeds 101-105 + confirmatory seeds 106-125) contrasts and power, seed-cluster bootstrap.
 Also reports the exploratory-only and confirmatory-only estimates side by side, and the minimum detectable effect."""
+import os; os.chdir(os.path.dirname(os.path.abspath(__file__)))  # paths below are relative to experiments/
 import glob, json, collections, random, statistics as st, math
 
 FAM = ['development', 'sparse', 'cold_start', 'delayed', 'shift', 'drift']
-EXPL = '/mnt/user-data/outputs/round1_v2/supplementary/eval2_results.jsonl'
+EXPL = 'results/eval2_results.jsonl'
 rows = [dict(json.loads(l), phase='exploratory') for l in open(EXPL)]
 for f in sorted(glob.glob('results/conf_*.jsonl') + glob.glob('results/conf2_*.jsonl') + glob.glob('results/conf3_*.jsonl')):
     rows += [dict(json.loads(l), phase='confirmatory') for l in open(f)]
