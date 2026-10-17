@@ -7,7 +7,7 @@
 
 We submit a deliberately simple, deterministic policy: reciprocal feasibility from the supplied eligibility rules, targeted
 hard-constraint clarification, supplied similarity-greedy allocation, and an independent output guard. It needs no learned asset,
-no network and no random numbers. The choice follows from our Round 1 research and from additional experiments in this report:
+no network and no random numbers. We retain candidate C as a pre-declared default, not because experiments established its superiority over the supplied greedy baseline. Across our confirmatory and fresh-seed comparisons, the observed differences are statistically uncertain. Candidate C reduces clarification cost, but that saving is a tie-break consideration rather than evidence of a better primary score. We therefore retain the tested policy and make no claim that it outperforms greedy:
 
 * **The score is supply-bound.** An episode contains about 100 pairs that are ever feasible and about 80% are introduced, so allocation
   and ranking rules have little to choose between (Section 5.2).
@@ -146,9 +146,7 @@ The submitted policy and the three supplied baselines were run with the official
 | Supplied no-clarification | 30 / 30 | 0.183 | 0.137 | 1.98 | 0 | 24.1 | 11 |
 | Supplied random-feasible | 30 / 30 | 0.267 | 0.356 | 5.08 | 197 | 22.5 | 16 |
 
-![Official evaluator results](figures/official.png)
-
-*Figure 3. Table A as a chart (exploratory seeds 101 to 105; see the reading note above).*
+**Uncertainty in Table A.** Paired bootstrap intervals over the five evaluation seeds (10,000 draws) give a submitted-minus-greedy primary-score difference of +0.150 (95% interval [-0.067, +0.367]). The interval includes zero, so these exploratory results do not establish that the submitted policy outperforms greedy. The submitted-minus-no-clarification difference is +0.333 (95% interval [+0.117, +0.567]), supporting the importance of clarification. With only five seeds, these estimates remain imprecise. We omit the standalone bar chart because it does not display this uncertainty.
 
 **Table B. Scenario-level outcomes (means per episode).**
 
@@ -188,7 +186,29 @@ The submitted policy and the three supplied baselines were run with the official
 * **Scale (`test_scale.py`).** Populations of 200 and 400 members over 20 days: slowest single call 0.35 s and 0.81 s, responses under 2 KiB. A 200-member request is about 397 KiB, so the harness's own 1 MiB request limit is reached at roughly 500 members, long before the 10 s limit would matter for this policy.
 * **Decision trace (`explain.py`, `explain_episode.py`).** For every ask the trace records the member, field, cost, credit and the pairs the answer could unlock; for every introduction it records the agreeing soft fields, the similarity score and the member's remaining options. `test_explain.py` confirms the trace never changes a decision (identical actions with and without it).
 
-## 7. Limitations
+## 7. Failure analysis
+
+### Cold starts
+
+In the cold-start scenario, preference fields are initially unobserved, limiting the number of feasible introductions. Clarification can reveal hard constraints and unlock additional feasible pairs, but it consumes the finite asking budget. The policy therefore faces a trade-off between learning preferences and making introductions. Performance in this scenario is constrained by the information available at the start, not just by allocation order.
+
+### Delayed dates and feedback
+
+In the delayed scenario, introductions may be scheduled too late to satisfy the evaluator's 30-day outcome window. A scheduled introduction does not necessarily contribute to the primary score if the required second-meeting outcome falls outside that window. The policy does not use outcome feedback to update its decisions; it relies on the currently observable state and the supplied eligibility rules.
+
+### Competition for the same candidate
+
+Multiple feasible pairs can compete for the same member, but the matching policy allocates disjoint pairs using the supplied greedy matcher. The experiments found little evidence that alternative ordering improved episode outcomes. This does not establish that competition is unimportant in every scenario; it means that the tested alternative did not demonstrate a reliable improvement.
+
+### Withheld answers and unknown preferences
+
+Some members decline to provide hard-constraint information. A declined field cannot be resolved through further clarification, and the policy must not treat an unknown value as satisfying a constraint. Consequently, some pairs remain infeasible regardless of allocation strategy. This limits achievable coverage independently of the matching order.
+
+### Censoring and zero-score episodes
+
+The primary metric only counts qualifying mutual second-meeting intentions within the specified evaluation window. Delayed scheduling and unavailable feedback can therefore limit the outcomes observed by the evaluator. Zero-score episodes occur even when a policy produces valid introductions; an individual episode is too noisy to establish policy superiority. Comparisons should be based on paired results across seeds, with uncertainty intervals, rather than isolated episode scores.\
+
+## 8. Limitations
 
 * **Public worlds only.** The six public scenario families approximate, but are not, the private worlds. Effects that vanish here could appear there and vice versa.
 * **Noise.** About one MSMI event occurs per 200-member episode. A 20-seed-per-family evaluation resolves differences of about 0.22 MSMI per 100 against a score near 0.45, so ranking among competent policies is largely chance. We therefore do not claim that our policy outperforms the baseline on the primary score.
@@ -198,11 +218,10 @@ The submitted policy and the three supplied baselines were run with the official
 * **Container check.** The authoring sandbox had no Docker daemon, so the container build and the offline container evaluation (`evaluate.py --image`, seed 101) were verified on GitHub Actions for the public repository: both the organisers' `verify.yml` workflow (tests on Python 3.10 and 3.12, data verification, local and container evaluation) and our `container-check.yml` workflow passed on commit 4f1c513 (an earlier commit failed because our Dockerfile copied a file that the supplied `.dockerignore` excluded; we restored the supplied Dockerfile). The container check covers one episode, not every assessed episode.
 * **Synthetic only.** Nothing here estimates real-world compatibility or relationship outcomes. A real service would need an adapter, validation on authorised data, current constraint checks and human review.
 
-## 8. Reproducibility
+## 9. Reproducibility
 
 All commands are in the README, and `bash run_all.sh` runs the tests, scale check and official-protocol evaluation in one step; `make_figures.py` redraws the figures from the numbers printed here. The submitted policy is deterministic (no random numbers; ties are broken by member identifier) and has no training seeds. Experiment scripts record seeds and variants; raw per-episode results are under `results/` and `experiments/`. The pre-specification files (`PRESPEC.txt`, `PRESPEC_R2.txt`) are included with their dates.
 
-## 9. Provenance and tools
+## 10. Provenance and tools
 
-Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run experiments and draft code and text. The team retains ownership of its work; this report grants no commercial licence.
 Only the public kit was used; no external data or paid services. Inside the image: Python standard library only. Offline experiment scripts additionally use NumPy and NetworkX (BSD-3-Clause), run on a single CPU core. An AI assistant (Claude, Anthropic) was used to read the repository, write and run the experiments and the policy code, and draft the Round 1 note, the code and this report. The team chose the problem track, directed the work and its scope, supplied the repository and accounts, and is responsible for the submission; the team's own review of individual results is not claimed beyond that. The team retains ownership of its work; this report grants no commercial licence.

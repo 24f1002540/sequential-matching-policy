@@ -24,12 +24,12 @@ One command: `bash run_all.sh` (quick) or `bash run_all.sh full`. The individual
 ```bash
 python -m unittest -v                         # kit tests and policy tests
 python verify_data.py
-python evaluate_method.py --seeds 101,102,103 --variants all --output results/final.json
-python evaluate.py --baseline greedy    --seeds 101,102,103 --variants all --output results/baseline_greedy.json
-python evaluate.py --baseline no_asks   --seeds 101,102,103 --variants all --output results/baseline_no_asks.json
-python evaluate.py --baseline random    --seeds 101,102,103 --variants all --output results/baseline_random.json
+python evaluate_method.py --seeds 101,102,103 --variants all --output results/repro/final.json
+python evaluate.py --baseline greedy    --seeds 101,102,103 --variants all --output results/repro/baseline_greedy.json
+python evaluate.py --baseline no_asks   --seeds 101,102,103 --variants all --output results/repro/baseline_no_asks.json
+python evaluate.py --baseline random    --seeds 101,102,103 --variants all --output results/repro/baseline_random.json
 docker build -t sequential-policy:submission .
-python evaluate.py --image sequential-policy:submission --seeds 101 --output results/container_check.json
+python evaluate.py --image sequential-policy:submission --seeds 101 --output results/repro/container_check.json
 ```
 `evaluate_method.py` is the supplied `evaluate.py` with one change: it launches `policy.py` with no `--baseline`
 argument, so the submitted method (not the greedy baseline) runs.
